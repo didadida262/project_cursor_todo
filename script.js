@@ -176,7 +176,7 @@ class TodoApp {
 
         // 显示空状态或任务列表
         if (filteredTodos.length === 0) {
-            emptyState.style.display = 'block';
+            emptyState.style.display = 'flex';
             todoList.style.display = 'none';
         } else {
             emptyState.style.display = 'none';
@@ -199,11 +199,14 @@ class TodoApp {
         li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
         li.setAttribute('data-id', todo.id);
 
+        const buttonClass = todo.completed ? 'btn-incomplete' : 'btn-complete';
+        const buttonText = todo.completed ? '未完成' : '完成';
+
         li.innerHTML = `
             <span class="todo-text">${this.escapeHtml(todo.text)}</span>
             <div class="todo-actions">
-                <button class="btn btn-complete" onclick="app.toggleTodo('${todo.id}')">
-                    ${todo.completed ? '未完成' : '完成'}
+                <button class="btn ${buttonClass}" onclick="app.toggleTodo('${todo.id}')">
+                    ${buttonText}
                 </button>
                 <button class="btn btn-delete" onclick="app.deleteTodo('${todo.id}')">
                     删除
@@ -337,8 +340,47 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// 初始化应用
-const app = new TodoApp();
+    // 初始化应用
+    const app = new TodoApp();
+
+    // 添加一些测试数据来验证滚动效果（开发时使用）
+    if (app.todos.length === 0) {
+        const testTodos = [
+            '学习JavaScript ES6+语法',
+            '完成待办事项应用开发',
+            '优化CSS样式和响应式设计',
+            '实现LocalStorage数据持久化',
+            '添加任务筛选和批量操作功能',
+            '测试应用在不同浏览器中的兼容性',
+            '编写项目文档和README',
+            '优化代码性能和用户体验',
+            '添加键盘快捷键支持',
+            '实现消息提示和动画效果',
+            '测试移动端响应式布局',
+            '优化滚动条样式和交互效果',
+            '添加任务搜索功能',
+            '实现任务优先级设置',
+            '添加任务分类和标签功能',
+            '实现任务导出和导入功能',
+            '添加任务提醒和通知功能',
+            '实现多用户协作功能',
+            '添加任务统计和分析功能',
+            '优化数据库查询性能'
+        ];
+        
+        testTodos.forEach((text, index) => {
+            const todo = {
+                id: `test_${index}`,
+                text: text,
+                completed: index % 3 === 0, // 每3个任务有一个是已完成的
+                createdAt: new Date(Date.now() - index * 60000).toISOString()
+            };
+            app.todos.push(todo);
+        });
+        
+        app.saveTodos();
+        app.render();
+    }
 
 // 页面加载完成后的额外初始化
 document.addEventListener('DOMContentLoaded', () => {
