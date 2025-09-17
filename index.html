@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项应用</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>待办事项应用</h1>
+        </header>
+        
+        <main>
+            <!-- 任务输入表单 -->
+            <section class="input-section">
+                <form id="todo-form" class="todo-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="todo-input" 
+                            placeholder="请输入新的待办事项..." 
+                            required
+                            maxlength="100"
+                        >
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- 筛选和统计 -->
+            <section class="filter-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="active">未完成</button>
+                    <button class="filter-btn" data-filter="completed">已完成</button>
+                </div>
+                <div class="stats">
+                    <span id="task-count">0 个任务</span>
+                </div>
+            </section>
+
+            <!-- 任务列表 -->
+            <section class="todo-section">
+                <ul id="todo-list" class="todo-list">
+                    <!-- 任务项将通过JavaScript动态添加 -->
+                </ul>
+                <div id="empty-state" class="empty-state">
+                    <p>暂无待办事项，添加一个开始吧！</p>
+                </div>
+            </section>
+
+            <!-- 批量操作 -->
+            <section class="batch-actions">
+                <button id="clear-completed" class="btn btn-secondary">清除已完成</button>
+                <button id="clear-all" class="btn btn-danger">清除全部</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
