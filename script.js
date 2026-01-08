@@ -1,4 +1,4 @@
-// 待办事项应用 - 主要功能实现
+// Todo App - Main Functionality Implementation
 class TodoApp {
     constructor() {
         this.todos = [];
@@ -6,29 +6,29 @@ class TodoApp {
         this.init();
     }
 
-    // 初始化应用
+    // Initialize application
     init() {
         this.loadTodos();
         this.bindEvents();
         this.render();
     }
 
-    // 绑定事件监听器
+    // Bind event listeners
     bindEvents() {
-        // 表单提交事件
+        // Form submit event
         document.getElementById('todo-form').addEventListener('submit', (e) => {
             e.preventDefault();
             this.addTodo();
         });
 
-        // 筛选按钮事件
+        // Filter button events
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 this.setFilter(e.target.dataset.filter);
             });
         });
 
-        // 批量操作事件
+        // Batch operation events
         document.getElementById('clear-completed').addEventListener('click', () => {
             this.clearCompleted();
         });
@@ -38,18 +38,18 @@ class TodoApp {
         });
     }
 
-    // 生成唯一ID
+    // Generate unique ID
     generateId() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
 
-    // 添加新任务
+    // Add new todo
     addTodo() {
         const input = document.getElementById('todo-input');
         const text = input.value.trim();
 
         if (!text) {
-            this.showMessage('请输入任务内容', 'warning');
+            this.showMessage('Please enter a task', 'warning');
             return;
         }
 
@@ -60,14 +60,14 @@ class TodoApp {
             createdAt: new Date().toISOString()
         };
 
-        this.todos.unshift(todo); // 新任务添加到顶部
+        this.todos.unshift(todo); // Add new task to the top
         input.value = '';
         this.saveTodos();
         this.render();
-        this.showMessage('任务添加成功', 'success');
+        this.showMessage('Task added successfully', 'success');
     }
 
-    // 切换任务完成状态
+    // Toggle todo completion status
     toggleTodo(id) {
         const todo = this.todos.find(t => t.id === id);
         if (todo) {
@@ -77,7 +77,7 @@ class TodoApp {
         }
     }
 
-    // 删除任务
+    // Delete todo
     deleteTodo(id) {
         const todoElement = document.querySelector(`[data-id="${id}"]`);
         if (todoElement) {
@@ -90,11 +90,11 @@ class TodoApp {
         }
     }
 
-    // 设置筛选条件
+    // Set filter condition
     setFilter(filter) {
         this.currentFilter = filter;
         
-        // 更新筛选按钮状态
+        // Update filter button status
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.remove('active');
         });
@@ -103,7 +103,7 @@ class TodoApp {
         this.render();
     }
 
-    // 获取筛选后的任务列表
+    // Get filtered todo list
     getFilteredTodos() {
         switch (this.currentFilter) {
             case 'active':
@@ -115,45 +115,45 @@ class TodoApp {
         }
     }
 
-    // 清除已完成的任务
+    // Clear completed tasks
     clearCompleted() {
         const completedCount = this.todos.filter(todo => todo.completed).length;
         if (completedCount === 0) {
-            this.showMessage('没有已完成的任务', 'info');
+            this.showMessage('No completed tasks', 'info');
             return;
         }
 
-        if (confirm(`确定要删除 ${completedCount} 个已完成的任务吗？`)) {
+        if (confirm(`Are you sure you want to delete ${completedCount} completed task(s)?`)) {
             this.todos = this.todos.filter(todo => !todo.completed);
             this.saveTodos();
             this.render();
-            this.showMessage(`已删除 ${completedCount} 个已完成的任务`, 'success');
+            this.showMessage(`Deleted ${completedCount} completed task(s)`, 'success');
         }
     }
 
-    // 清除所有任务
+    // Clear all tasks
     clearAll() {
         if (this.todos.length === 0) {
-            this.showMessage('没有任务需要清除', 'info');
+            this.showMessage('No tasks to clear', 'info');
             return;
         }
 
-        if (confirm(`确定要删除所有 ${this.todos.length} 个任务吗？`)) {
+        if (confirm(`Are you sure you want to delete all ${this.todos.length} task(s)?`)) {
             this.todos = [];
             this.saveTodos();
             this.render();
-            this.showMessage('已清除所有任务', 'success');
+            this.showMessage('All tasks cleared', 'success');
         }
     }
 
-    // 渲染任务列表
+    // Render todo list
     render() {
         const todoList = document.getElementById('todo-list');
         const emptyState = document.getElementById('empty-state');
         const taskCount = document.getElementById('task-count');
         const filteredTodos = this.getFilteredTodos();
 
-        // 更新任务计数
+        // Update task count
         const totalTasks = this.todos.length;
         const activeTasks = this.todos.filter(todo => !todo.completed).length;
         const completedTasks = this.todos.filter(todo => todo.completed).length;
@@ -161,20 +161,20 @@ class TodoApp {
         let countText = '';
         switch (this.currentFilter) {
             case 'active':
-                countText = `${activeTasks} 个未完成任务`;
+                countText = `${activeTasks} active task(s)`;
                 break;
             case 'completed':
-                countText = `${completedTasks} 个已完成任务`;
+                countText = `${completedTasks} completed task(s)`;
                 break;
             default:
-                countText = `${totalTasks} 个任务 (${activeTasks} 未完成, ${completedTasks} 已完成)`;
+                countText = `${totalTasks} task(s) (${activeTasks} active, ${completedTasks} completed)`;
         }
         taskCount.textContent = countText;
 
-        // 清空列表
+        // Clear list
         todoList.innerHTML = '';
 
-        // 显示空状态或任务列表
+        // Show empty state or todo list
         if (filteredTodos.length === 0) {
             emptyState.style.display = 'flex';
             todoList.style.display = 'none';
@@ -182,25 +182,25 @@ class TodoApp {
             emptyState.style.display = 'none';
             todoList.style.display = 'block';
 
-            // 渲染任务项
+            // Render todo items
             filteredTodos.forEach(todo => {
                 const todoElement = this.createTodoElement(todo);
                 todoList.appendChild(todoElement);
             });
         }
 
-        // 更新批量操作按钮状态
+        // Update batch operation button status
         this.updateBatchButtons();
     }
 
-    // 创建任务元素
+    // Create todo element
     createTodoElement(todo) {
         const li = document.createElement('li');
         li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
         li.setAttribute('data-id', todo.id);
 
         const buttonClass = todo.completed ? 'btn-incomplete' : 'btn-complete';
-        const buttonText = todo.completed ? '未完成' : '完成';
+        const buttonText = todo.completed ? 'Incomplete' : 'Complete';
 
         li.innerHTML = `
             <span class="todo-text">${this.escapeHtml(todo.text)}</span>
@@ -209,7 +209,7 @@ class TodoApp {
                     ${buttonText}
                 </button>
                 <button class="btn btn-delete" onclick="app.deleteTodo('${todo.id}')">
-                    删除
+                    Delete
                 </button>
             </div>
         `;
@@ -217,14 +217,14 @@ class TodoApp {
         return li;
     }
 
-    // HTML转义，防止XSS攻击
+    // HTML escape to prevent XSS attacks
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     }
 
-    // 更新批量操作按钮状态
+    // Update batch operation button status
     updateBatchButtons() {
         const completedCount = this.todos.filter(todo => todo.completed).length;
         const clearCompletedBtn = document.getElementById('clear-completed');
@@ -234,29 +234,29 @@ class TodoApp {
         clearAllBtn.disabled = this.todos.length === 0;
 
         if (completedCount === 0) {
-            clearCompletedBtn.textContent = '清除已完成';
+            clearCompletedBtn.textContent = 'Clear Completed';
         } else {
-            clearCompletedBtn.textContent = `清除已完成 (${completedCount})`;
+            clearCompletedBtn.textContent = `Clear Completed (${completedCount})`;
         }
 
         if (this.todos.length === 0) {
-            clearAllBtn.textContent = '清除全部';
+            clearAllBtn.textContent = 'Clear All';
         } else {
-            clearAllBtn.textContent = `清除全部 (${this.todos.length})`;
+            clearAllBtn.textContent = `Clear All (${this.todos.length})`;
         }
     }
 
-    // 保存到LocalStorage
+    // Save to LocalStorage
     saveTodos() {
         try {
             localStorage.setItem('todos', JSON.stringify(this.todos));
         } catch (error) {
-            console.error('保存数据失败:', error);
-            this.showMessage('保存数据失败', 'error');
+            console.error('Failed to save data:', error);
+            this.showMessage('Failed to save data', 'error');
         }
     }
 
-    // 从LocalStorage加载
+    // Load from LocalStorage
     loadTodos() {
         try {
             const stored = localStorage.getItem('todos');
@@ -264,14 +264,14 @@ class TodoApp {
                 this.todos = JSON.parse(stored);
             }
         } catch (error) {
-            console.error('加载数据失败:', error);
+            console.error('Failed to load data:', error);
             this.todos = [];
         }
     }
 
-    // 显示消息提示
+    // Show message notification
     showMessage(message, type = 'info') {
-        // 创建消息元素
+        // Create message element
         const messageEl = document.createElement('div');
         messageEl.className = `message message-${type}`;
         messageEl.textContent = message;
@@ -289,7 +289,7 @@ class TodoApp {
             word-wrap: break-word;
         `;
 
-        // 根据类型设置背景色
+        // Set background color based on type
         const colors = {
             success: '#28a745',
             error: '#dc3545',
@@ -298,10 +298,10 @@ class TodoApp {
         };
         messageEl.style.backgroundColor = colors[type] || colors.info;
 
-        // 添加到页面
+        // Add to page
         document.body.appendChild(messageEl);
 
-        // 3秒后自动移除
+        // Auto remove after 3 seconds
         setTimeout(() => {
             messageEl.style.animation = 'slideOutRight 0.3s ease';
             setTimeout(() => {
@@ -313,7 +313,7 @@ class TodoApp {
     }
 }
 
-// 添加消息动画样式
+// Add message animation styles
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
@@ -340,39 +340,39 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-    // 初始化应用
+    // Initialize application
     const app = new TodoApp();
 
-    // 添加一些测试数据来验证滚动效果（开发时使用）
+    // Add some test data to verify scroll effect (for development use)
     if (app.todos.length === 0) {
         const testTodos = [
-            '学习JavaScript ES6+语法',
-            '完成待办事项应用开发',
-            '优化CSS样式和响应式设计',
-            '实现LocalStorage数据持久化',
-            '添加任务筛选和批量操作功能',
-            '测试应用在不同浏览器中的兼容性',
-            '编写项目文档和README',
-            '优化代码性能和用户体验',
-            '添加键盘快捷键支持',
-            '实现消息提示和动画效果',
-            '测试移动端响应式布局',
-            '优化滚动条样式和交互效果',
-            '添加任务搜索功能',
-            '实现任务优先级设置',
-            '添加任务分类和标签功能',
-            '实现任务导出和导入功能',
-            '添加任务提醒和通知功能',
-            '实现多用户协作功能',
-            '添加任务统计和分析功能',
-            '优化数据库查询性能'
+            'Learn JavaScript ES6+ syntax',
+            'Complete todo app development',
+            'Optimize CSS styles and responsive design',
+            'Implement LocalStorage data persistence',
+            'Add task filtering and batch operations',
+            'Test app compatibility across browsers',
+            'Write project documentation and README',
+            'Optimize code performance and user experience',
+            'Add keyboard shortcut support',
+            'Implement message notifications and animations',
+            'Test mobile responsive layout',
+            'Optimize scrollbar styles and interactions',
+            'Add task search functionality',
+            'Implement task priority settings',
+            'Add task categories and tags',
+            'Implement task export and import',
+            'Add task reminders and notifications',
+            'Implement multi-user collaboration',
+            'Add task statistics and analytics',
+            'Optimize database query performance'
         ];
         
         testTodos.forEach((text, index) => {
             const todo = {
                 id: `test_${index}`,
                 text: text,
-                completed: index % 3 === 0, // 每3个任务有一个是已完成的
+                completed: index % 3 === 0, // Every 3rd task is completed
                 createdAt: new Date(Date.now() - index * 60000).toISOString()
             };
             app.todos.push(todo);
@@ -382,20 +382,20 @@ document.head.appendChild(style);
         app.render();
     }
 
-// 页面加载完成后的额外初始化
+// Additional initialization after page load
 document.addEventListener('DOMContentLoaded', () => {
-    // 聚焦到输入框
+    // Focus on input field
     document.getElementById('todo-input').focus();
     
-    // 添加键盘快捷键支持
+    // Add keyboard shortcut support
     document.addEventListener('keydown', (e) => {
-        // Ctrl/Cmd + Enter 快速添加任务
+        // Ctrl/Cmd + Enter to quickly add task
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
             e.preventDefault();
             app.addTodo();
         }
         
-        // Escape 清空输入框
+        // Escape to clear input field
         if (e.key === 'Escape') {
             document.getElementById('todo-input').value = '';
             document.getElementById('todo-input').blur();

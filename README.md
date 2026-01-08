@@ -1,85 +1,84 @@
-部署地址：project-cursor-todo.vercel.app
+Deployment URL: project-cursor-todo.vercel.app
 
-# 待办事项应用 (Todo App)
+# Todo App
 
+A modern todo management application built with vanilla HTML, CSS, and JavaScript.
 
-一个基于原生HTML、CSS、JavaScript开发的现代待办事项管理应用。
+## Features
 
-## 功能特性
+### Core Features
+- ✅ **Add Tasks**: Quickly add new todo items
+- ✅ **Mark Complete**: One-click to mark tasks as completed
+- ✅ **Delete Tasks**: Remove unwanted tasks
+- ✅ **Data Persistence**: Automatically save data using LocalStorage
 
-### 核心功能
-- ✅ **添加任务**: 快速添加新的待办事项
-- ✅ **标记完成**: 一键标记任务为已完成状态
-- ✅ **删除任务**: 删除不需要的任务
-- ✅ **数据持久化**: 使用LocalStorage自动保存数据
+### Advanced Features
+- 🔍 **Task Filtering**: View all/active/completed tasks
+- 🧹 **Batch Operations**: Clear completed tasks or clear all tasks
+- 📊 **Task Statistics**: Real-time display of task count and status
+- 🎨 **Modern UI**: Responsive design with mobile support
 
-### 高级功能
-- 🔍 **任务筛选**: 查看全部/未完成/已完成的任务
-- 🧹 **批量操作**: 清除已完成任务或清空所有任务
-- 📊 **任务统计**: 实时显示任务数量和状态
-- 🎨 **现代UI**: 响应式设计，支持移动端
+### User Experience
+- ⌨️ **Keyboard Shortcuts**: Ctrl/Cmd+Enter to quickly add, Escape to clear input
+- 💫 **Animations**: Smooth add and delete animations
+- 📱 **Responsive Design**: Perfect adaptation for desktop and mobile devices
+- 🔔 **Message Notifications**: Operation feedback and status notifications
 
-### 用户体验
-- ⌨️ **键盘快捷键**: Ctrl/Cmd+Enter快速添加，Escape清空输入
-- 💫 **动画效果**: 流畅的添加、删除动画
-- 📱 **响应式设计**: 完美适配桌面和移动设备
-- 🔔 **消息提示**: 操作反馈和状态提示
+## Tech Stack
 
-## 技术栈
+- **HTML5**: Semantic tags, accessibility
+- **CSS3**: Modern styles, gradient backgrounds, animations
+- **JavaScript ES6+**: Class syntax, modular design
+- **LocalStorage**: Local data persistence
 
-- **HTML5**: 语义化标签，无障碍访问
-- **CSS3**: 现代样式，渐变背景，动画效果
-- **JavaScript ES6+**: 类语法，模块化设计
-- **LocalStorage**: 本地数据持久化
+## Quick Start
 
-## 快速开始
+1. Download or clone the project files
+2. Open `index.html` in a browser
+3. Start managing your todos!
 
-1. 下载或克隆项目文件
-2. 在浏览器中打开 `index.html`
-3. 开始管理你的待办事项！
+## Usage
 
-## 使用说明
+### Adding Tasks
+- Enter task content in the input field
+- Click the "Add" button or press Ctrl/Cmd+Enter
+- New tasks will appear at the top of the list
 
-### 添加任务
-- 在输入框中输入任务内容
-- 点击"添加"按钮或按 Ctrl/Cmd+Enter
-- 新任务会出现在列表顶部
+### Managing Tasks
+- **Complete Task**: Click the "Complete" button on a task item
+- **Delete Task**: Click the "Delete" button on a task item
+- **Filter Tasks**: Use the filter buttons at the top to view tasks in different states
 
-### 管理任务
-- **完成任务**: 点击任务项的"完成"按钮
-- **删除任务**: 点击任务项的"删除"按钮
-- **筛选任务**: 使用顶部的筛选按钮查看不同状态的任务
+### Batch Operations
+- **Clear Completed**: Delete all completed tasks
+- **Clear All**: Clear all tasks (use with caution)
 
-### 批量操作
-- **清除已完成**: 删除所有已完成的任务
-- **清除全部**: 清空所有任务（谨慎使用）
-
-## 浏览器支持
+## Browser Support
 
 - Chrome 60+
 - Firefox 55+
 - Safari 12+
 - Edge 79+
 
-## 项目结构
+## Project Structure
 
 ```
 project_cursor_todo/
-├── index.html          # 主页面文件
-├── style.css           # 样式文件
-├── script.js           # 脚本文件
-├── README.md           # 项目说明
-└── PRD.md             # 产品需求文档
+├── index.html          # Main page file
+├── style.css           # Stylesheet
+├── script.js           # Script file
+├── README.md           # Project documentation
+└── PRD.md             # Product Requirements Document
 ```
 
-## 开发说明
+## Development Notes
 
-本项目严格按照PRD.md中的需求规范开发，包含：
-- 完整的HTML语义化结构
-- 现代CSS样式设计
-- 模块化JavaScript代码
-- 完整的功能测试覆盖
+This project is strictly developed according to the requirements in PRD.md, including:
+- Complete HTML semantic structure
+- Modern CSS design
+- Modular JavaScript code
+- Complete functional test coverage
 
-## 许可证
+## License
 
 MIT License

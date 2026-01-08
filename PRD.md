@@ -1,187 +1,187 @@
-# 待办事项应用产品需求文档 (PRD)
+# Todo App Product Requirements Document (PRD)
 
-## 1. 项目概述
+## 1. Project Overview
 
-### 1.1 项目名称
-待办事项应用 (Todo App)
+### 1.1 Project Name
+Todo App
 
-### 1.2 项目描述
-一个基于原生HTML、CSS、JavaScript开发的简单待办事项管理应用，提供任务添加、完成标记、删除等基础功能，并支持数据持久化存储。
+### 1.2 Project Description
+A simple todo management application built with vanilla HTML, CSS, and JavaScript, providing basic features such as task addition, completion marking, deletion, and supporting data persistence storage.
 
-### 1.3 技术栈
-- HTML5 (语义化标签)
-- CSS3 (现代样式设计)
+### 1.3 Tech Stack
+- HTML5 (Semantic tags)
+- CSS3 (Modern style design)
 - JavaScript (ES6+)
-- LocalStorage (数据持久化)
+- LocalStorage (Data persistence)
 
-## 2. 功能需求
+## 2. Functional Requirements
 
-### 2.1 核心功能
+### 2.1 Core Features
 
-#### 2.1.1 任务管理
-- **添加任务**: 用户可以通过输入框添加新的待办事项
-- **标记完成**: 用户可以标记任务为已完成状态
-- **删除任务**: 用户可以删除不需要的任务
-- **任务显示**: 以列表形式展示所有待办事项
+#### 2.1.1 Task Management
+- **Add Task**: Users can add new todo items through an input field
+- **Mark Complete**: Users can mark tasks as completed
+- **Delete Task**: Users can delete unwanted tasks
+- **Task Display**: Display all todo items in a list format
 
-#### 2.1.2 数据持久化
-- **本地存储**: 使用LocalStorage保存任务数据
-- **数据同步**: 页面加载时自动读取存储的数据
-- **实时更新**: 所有操作（添加、完成、删除）都同步更新LocalStorage
+#### 2.1.2 Data Persistence
+- **Local Storage**: Use LocalStorage to save task data
+- **Data Sync**: Automatically read stored data when the page loads
+- **Real-time Updates**: All operations (add, complete, delete) synchronously update LocalStorage
 
-#### 2.1.3 任务筛选
-- **全部任务**: 显示所有任务
-- **未完成任务**: 仅显示未完成的任务
-- **已完成任务**: 仅显示已完成的任务
+#### 2.1.3 Task Filtering
+- **All Tasks**: Display all tasks
+- **Active Tasks**: Display only active tasks
+- **Completed Tasks**: Display only completed tasks
 
-#### 2.1.4 批量操作
-- **清除已完成**: 批量删除所有已完成的任务
-- **清除全部**: 清空所有任务
+#### 2.1.4 Batch Operations
+- **Clear Completed**: Batch delete all completed tasks
+- **Clear All**: Clear all tasks
 
-### 2.2 用户界面需求
+### 2.2 User Interface Requirements
 
-#### 2.2.1 页面结构
-- 页面标题
-- 任务输入表单（输入框 + 添加按钮）
-- 任务列表（有序列表）
-- 筛选按钮组
-- 批量操作按钮
+#### 2.2.1 Page Structure
+- Page title
+- Task input form (input field + add button)
+- Todo list (ordered list)
+- Filter button group
+- Batch operation buttons
 
-#### 2.2.2 视觉设计
-- **布局**: 主体居中显示，最大宽度800px
-- **样式**: 现代、简洁的设计风格
-- **交互反馈**: 按钮和列表项悬停效果
-- **间距**: 列表项之间有适当的间距
+#### 2.2.2 Visual Design
+- **Layout**: Main content centered, maximum width 800px
+- **Style**: Modern, clean design style
+- **Interactive Feedback**: Hover effects on buttons and list items
+- **Spacing**: Appropriate spacing between list items
 
-#### 2.2.3 任务项设计
-每个任务项包含：
-- 任务文本内容
-- 完成按钮
-- 删除按钮
-- 完成状态样式（删除线效果）
+#### 2.2.3 Task Item Design
+Each task item contains:
+- Task text content
+- Complete button
+- Delete button
+- Completed state style (strikethrough effect)
 
-## 3. 技术规范
+## 3. Technical Specifications
 
-### 3.1 文件结构
+### 3.1 File Structure
 ```
 project_cursor_todo/
-├── index.html          # 主页面文件
-├── style.css           # 样式文件
-├── script.js           # 脚本文件
-└── README.md           # 项目说明
+├── index.html          # Main page file
+├── style.css           # Stylesheet
+├── script.js           # Script file
+└── README.md           # Project documentation
 ```
 
-### 3.2 HTML规范
-- 使用语义化HTML5标签
-- 正确的文档结构
-- 链接外部CSS和JS文件
-- 表单元素正确配置
+### 3.2 HTML Specifications
+- Use semantic HTML5 tags
+- Correct document structure
+- Link external CSS and JS files
+- Proper form element configuration
 
-### 3.3 CSS规范
-- 响应式设计
-- 现代CSS特性
-- 良好的视觉层次
-- 一致的间距和字体
+### 3.3 CSS Specifications
+- Responsive design
+- Modern CSS features
+- Good visual hierarchy
+- Consistent spacing and typography
 
-### 3.4 JavaScript规范
-- ES6+语法
-- 模块化代码组织
-- 事件处理
-- LocalStorage API使用
+### 3.4 JavaScript Specifications
+- ES6+ syntax
+- Modular code organization
+- Event handling
+- LocalStorage API usage
 
-## 4. 数据结构
+## 4. Data Structure
 
-### 4.1 任务对象结构
+### 4.1 Task Object Structure
 ```javascript
 {
-  id: "unique_id",           // 唯一标识符
-  text: "任务内容",           // 任务描述
-  completed: false,          // 完成状态
-  createdAt: "2024-01-01"    // 创建时间
+  id: "unique_id",           // Unique identifier
+  text: "Task content",      // Task description
+  completed: false,          // Completion status
+  createdAt: "2024-01-01"    // Creation time
 }
 ```
 
-### 4.2 LocalStorage键名
-- `todos`: 存储所有任务数据
+### 4.2 LocalStorage Key Names
+- `todos`: Store all task data
 
-## 5. 用户交互流程
+## 5. User Interaction Flow
 
-### 5.1 添加任务流程
-1. 用户在输入框中输入任务内容
-2. 点击"添加"按钮
-3. 系统验证输入内容
-4. 创建新任务项并添加到列表
-5. 清空输入框
-6. 更新LocalStorage
+### 5.1 Add Task Flow
+1. User enters task content in the input field
+2. Click the "Add" button
+3. System validates input content
+4. Create new task item and add to list
+5. Clear input field
+6. Update LocalStorage
 
-### 5.2 完成任务流程
-1. 用户点击任务项的"完成"按钮
-2. 任务项添加"completed"CSS类
-3. 任务文本显示删除线效果
-4. 更新LocalStorage中的任务状态
+### 5.2 Complete Task Flow
+1. User clicks the "Complete" button on a task item
+2. Task item adds "completed" CSS class
+3. Task text displays strikethrough effect
+4. Update task status in LocalStorage
 
-### 5.3 删除任务流程
-1. 用户点击任务项的"删除"按钮
-2. 任务项从DOM中移除
-3. 从LocalStorage中删除对应数据
+### 5.3 Delete Task Flow
+1. User clicks the "Delete" button on a task item
+2. Task item is removed from DOM
+3. Delete corresponding data from LocalStorage
 
-### 5.4 筛选任务流程
-1. 用户点击筛选按钮（全部/未完成/已完成）
-2. 根据选择的条件过滤任务列表
-3. 更新页面显示
+### 5.4 Filter Task Flow
+1. User clicks filter button (All/Active/Completed)
+2. Filter task list based on selected condition
+3. Update page display
 
-## 6. 非功能性需求
+## 6. Non-Functional Requirements
 
-### 6.1 性能要求
-- 页面加载时间 < 2秒
-- 操作响应时间 < 100ms
-- 支持至少100个任务项
+### 6.1 Performance Requirements
+- Page load time < 2 seconds
+- Operation response time < 100ms
+- Support at least 100 task items
 
-### 6.2 兼容性要求
-- 支持现代浏览器（Chrome、Firefox、Safari、Edge）
-- 支持移动端响应式显示
+### 6.2 Compatibility Requirements
+- Support modern browsers (Chrome, Firefox, Safari, Edge)
+- Support mobile responsive display
 
-### 6.3 可用性要求
-- 界面简洁直观
-- 操作流程清晰
-- 提供视觉反馈
+### 6.3 Usability Requirements
+- Simple and intuitive interface
+- Clear operation flow
+- Provide visual feedback
 
-## 7. 开发计划
+## 7. Development Plan
 
-### 7.1 开发阶段
-1. **环境搭建**: 创建项目目录和基础文件
-2. **HTML结构**: 实现页面基础结构
-3. **CSS样式**: 实现现代UI设计
-4. **基础功能**: 实现添加、完成、删除功能
-5. **数据持久化**: 集成LocalStorage
-6. **高级功能**: 实现筛选和批量操作
-7. **测试优化**: 功能测试和性能优化
+### 7.1 Development Phases
+1. **Environment Setup**: Create project directory and base files
+2. **HTML Structure**: Implement page base structure
+3. **CSS Styling**: Implement modern UI design
+4. **Core Features**: Implement add, complete, delete functionality
+5. **Data Persistence**: Integrate LocalStorage
+6. **Advanced Features**: Implement filtering and batch operations
+7. **Testing & Optimization**: Functional testing and performance optimization
 
-### 7.2 验收标准
-- 所有功能按需求正常实现
-- 界面美观且响应式
-- 数据持久化正常工作
-- 代码结构清晰可维护
+### 7.2 Acceptance Criteria
+- All features implemented according to requirements
+- Beautiful and responsive interface
+- Data persistence working normally
+- Clear and maintainable code structure
 
-## 8. 风险评估
+## 8. Risk Assessment
 
-### 8.1 技术风险
-- LocalStorage存储限制
-- 浏览器兼容性问题
-- 性能优化挑战
+### 8.1 Technical Risks
+- LocalStorage storage limitations
+- Browser compatibility issues
+- Performance optimization challenges
 
-### 8.2 解决方案
-- 实现数据压缩和分页
-- 使用polyfill确保兼容性
-- 代码优化和懒加载
+### 8.2 Solutions
+- Implement data compression and pagination
+- Use polyfills to ensure compatibility
+- Code optimization and lazy loading
 
-## 9. 附录
+## 9. Appendix
 
-### 9.1 参考资源
-- HTML5语义化标签规范
-- CSS3现代设计指南
-- JavaScript ES6+最佳实践
-- LocalStorage API文档
+### 9.1 Reference Resources
+- HTML5 semantic tag specifications
+- CSS3 modern design guidelines
+- JavaScript ES6+ best practices
+- LocalStorage API documentation
 
-### 9.2 更新日志
-- v1.0: 初始版本需求定义
+### 9.2 Changelog
+- v1.0: Initial version requirements definition

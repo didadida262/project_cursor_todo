@@ -1,4 +1,4 @@
-/* 重置和基础样式 */
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     padding: 20px;
 }
 
-/* 容器样式 */
+/* Container Styles */
 .container {
     max-width: 800px;
     max-height: 80vh;
@@ -31,7 +31,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* 头部样式 */
+/* Header Styles */
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -46,7 +46,7 @@ header h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* 主要内容区域 */
+/* Main Content Area */
 main {
     padding: 2rem;
     flex: 1;
@@ -55,7 +55,7 @@ main {
     flex-direction: column;
 }
 
-/* 输入区域 */
+/* Input Area */
 .input-section {
     margin-bottom: 1.5rem;
     flex-shrink: 0;
@@ -88,7 +88,7 @@ main {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* 按钮样式 */
+/* Button Styles */
 .btn {
     padding: 16px 24px;
     border: none;
@@ -171,7 +171,7 @@ main {
     transform: translateY(-1px);
 }
 
-/* 筛选区域 */
+/* Filter Area */
 .filter-section {
     display: flex;
     justify-content: space-between;
@@ -216,7 +216,7 @@ main {
     font-weight: 500;
 }
 
-/* 任务列表 */
+/* Todo List */
 .todo-section {
     margin-bottom: 0;
     flex: 1;
@@ -236,7 +236,7 @@ main {
     padding-right: 8px;
 }
 
-/* 自定义滚动条样式 */
+/* Custom Scrollbar Styles */
 .todo-list::-webkit-scrollbar {
     width: 8px;
 }
@@ -323,7 +323,7 @@ main {
     gap: 8px;
 }
 
-/* 空状态 */
+/* Empty State */
 .empty-state {
     text-align: center;
     padding: 3rem 2rem;
@@ -340,7 +340,7 @@ main {
     margin: 0;
 }
 
-/* 批量操作 */
+/* Batch Actions */
 .batch-actions {
     display: flex;
     gap: 12px;
@@ -352,7 +352,7 @@ main {
     background: white;
 }
 
-/* 动画效果 */
+/* Animation Effects */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -379,7 +379,7 @@ main {
     animation: slideOut 0.3s ease forwards;
 }
 
-/* 响应式设计 */
+/* Responsive Design */
 @media (max-width: 768px) {
     body {
         padding: 10px;
